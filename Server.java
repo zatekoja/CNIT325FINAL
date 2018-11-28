@@ -1,3 +1,5 @@
+package cnit325finalproject;
+
 
 
 import java.io.BufferedReader;
@@ -38,8 +40,7 @@ public class Server implements  java.io.Serializable {
             
             ServerSocket s = new ServerSocket(port);             
             System.out.println("Server started");
-            System.out.println("TCPServer Waiting for client on port 8189");
-            
+            System.out.println("TCPServer Waiting for client on port 8189");            
             while (true)
             {                
             Socket incoming = s.accept();  
@@ -47,13 +48,9 @@ public class Server implements  java.io.Serializable {
             outToClient = new ObjectOutputStream(incoming.getOutputStream());            
             System.out.println("Client connected");
             count++;               
-            System.out.println("count :" + count); 
-            System.out.println("Reading from client");            
-            String Send = (String)(inFromClient.readObject());
-            System.out.println("String received, string is  " + Send);        
-             System.out.println("Person Read");
+            System.out.println("count :" + count);       
              person_stream1 = (Person)(inFromClient.readObject()); 
-             Person_list.add(count-1, person_stream1);           
+             Person_list.add(count-1, person_stream1);         
           
             System.out.println("Array list size :    "+Person_list.size());
             for (int i = 0; i < Person_list.size(); i++)
@@ -62,22 +59,15 @@ public class Server implements  java.io.Serializable {
             }
            
             System.out.println("End list");
-            System.out.println("-----------sending count to user-----------------");   
-           
+            System.out.println("-----------sending count to user-----------------");              
             System.out.println("----------------count sent------------");   
             MtS = new MultithreadedServer(incoming,person_stream1,inFromClient,outToClient,count, this);
             mts_list.add(MtS);
             System.out.println("----------------------------");
             System.out.println("Multi threaded server started");
             MtS.start();
-            this.send_message_client("There are currently "+count + " people in the chatroom");
-            System.out.println("----------------------------");
-            if (MtS.isAlive())
-            {
+         
             
-            }
-            else
-            { count = 0;}
             
 
           
@@ -92,11 +82,7 @@ public class Server implements  java.io.Serializable {
         
     
 }
-    public static void main(String[] args)
-    {
-        Server server = new Server(8189); 
-
-}
+  
     public void send_message_client(String msg)
     {
     for (MultithreadedServer m : mts_list)
