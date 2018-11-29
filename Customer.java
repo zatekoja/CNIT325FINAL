@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author ateko
  */
-public class Customer implements  java.io.Serializable extends Person {
+public class Customer extends Person implements java.io.Serializable {
     private String CustomerID;
     private Person p;
     
