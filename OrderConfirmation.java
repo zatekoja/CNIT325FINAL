@@ -15,10 +15,10 @@ import java.util.Properties;
  */
 public class OrderConfirmation extends Customer
 {
-    private String ConfirmationID;
+    private String ConfirmationID, fName, lName, address, zipcode;
     private Customer c;
     
-    public OrderConfirmation(String customerInfo, String fName, String lName, String address, String zipcode)
+    public OrderConfirmation(String customerInfo)
     {
         this.ConfirmationID = ConfirmationID;
         fName = c.getFirstName();
