@@ -9,7 +9,7 @@ package finalproj;
  *
  * @author Aron
  */
-public class Supplier 
+public class Supplier extends Person
 {
     String firstName;
     String lastName;
