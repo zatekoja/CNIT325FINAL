@@ -16,7 +16,7 @@ public class Person implements  java.io.Serializable {
     private String Address; 
     private String Zipcode; 
     
-     public Person (String name,String lastname,String message)
+     public Person (String name,String lastname)
     {
         FirstName = name; 
         Lastname = lastname;
