@@ -15,21 +15,16 @@ import javax.swing.JOptionPane;
  */
 public class Customer implements  java.io.Serializable {
     private String CustomerID;
-	private Person p;
+    private Person p;
     
-    public Customer (String CustomerID, String fName, String lName, String address1, String address2, String city, String state,
-		String zipcode, String country, String price)
+    public Customer (String CustomerID, String fName, String lName, String address,
+		String zipcode)
     {
         this.CustomerID = CustomerID;
-		fName = p.getFirstName();
-		lName = p.getLastName();
-		address1 = p.getAddress1();
-		address2 = p.getAddress2();
-		city = p.getCity();
-		state = p.getState();
-		zipcode = p.getZipcode();
-		country = p.getCountry();
-		price = p.getPrice();
+	fName = p.getName();
+	lName = p.getIdnum();
+	address = p.getAddress();
+	zipcode = p.getZipcode();
     }
 
 	/**
@@ -55,53 +50,18 @@ public class Customer implements  java.io.Serializable {
     }
 
     /**
-     * @return the Address1
+     * @return the Address
      */
-    public String getAddress1() {
-        return address1;
-    }
-	
-	/**
-     * @return the Address2
-     */
-    public String getAddress2() {
-        return address2;
+    public String getAddress() {
+        return address;
     }
 
-	/**
-	 * @return the City
-	 */
-	public String getCity() {
-		return city;
-	}
-	
-	/**
-	 * @return the State
-	 */
-	public String getState() {
-		return state;
-	}
-	
     /**
      * @return the Zipcode
      */
     public String getZipcode() {
         return Zipcode;
     }
-	
-	/**
-	 * @return the Ccountry
-	 */
-	public String getCountry() {
-		return country;
-	}
-	
-	/**
-	 * @return the Price
-	 */
-	public String getPrice() {
-		return price;
-	}
 
     /**
      * @return the Message
