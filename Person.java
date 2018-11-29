@@ -41,14 +41,14 @@ public class Person implements  java.io.Serializable {
     /**
      * @return the Idnum
      */
-    public String Lastname() {
+    public String getLastname() {
         return Lastname;
     }
 
     /**
      * @param Idnum the Idnum to set
      */
-    public void Lastname(String Lastname) {
+    public void setLastname(String Lastname) {
         this.Lastname = Lastname;
     }
 
