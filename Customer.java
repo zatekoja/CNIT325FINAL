@@ -15,10 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class Customer extends Person implements java.io.Serializable {
     private String CustomerID;
+    private String fName;
+    private String lName;
+    private String address;
+    private String zipcode;
     private Person p;
     
-    public Customer (String CustomerID, String fName, String lName, String address,
-		String zipcode)
+    public Customer (String CustomerID)
     {
         this.CustomerID = CustomerID;
 	fName = p.getName();
