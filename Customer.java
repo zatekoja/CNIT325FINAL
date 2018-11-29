@@ -15,19 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class Customer extends Person implements java.io.Serializable {
     private String CustomerID;
-    private String fName;
-    private String lName;
-    private String address;
-    private String zipcode;
-    private Person p;
     
-    public Customer (String CustomerID)
+	
+	/**
+	* name, address, contact
+	*/
+    public Customer(String CustomerID,String name,String address,String phone_num,String city,String state, String Country,String email,String zipcode)
     {
-        this.CustomerID = CustomerID;
-	fName = p.getName();
-	lName = p.getLastname();
-	address = p.getAddress();
-	zipcode = p.getZipcode();
+	super(name, address, phone_num, city, state, Country, email, zipcode);
+	this.CustomerID = CustomerID;
     }
 
 	/**
@@ -39,17 +35,10 @@ public class Customer extends Person implements java.io.Serializable {
 	}
 	
     /**
-     * @return the First Name
-     */
-    public String getFirstName() {
-        return fName;
-	}
-
-    /**
      * @return the Last Name
      */
-    public String getLastName() {
-        return lName;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -63,7 +52,7 @@ public class Customer extends Person implements java.io.Serializable {
      * @return the Zipcode
      */
     public String getZipcode() {
-        return Zipcode;
+        return zipcode;
     }
 
     /**
