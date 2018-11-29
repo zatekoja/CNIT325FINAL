@@ -1,8 +1,5 @@
 package cnit325finalproject;
 
-
-import javax.swing.JOptionPane;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,12 +16,13 @@ public class Person implements  java.io.Serializable {
     private String Address; 
     private String Zipcode; 
     
-    public Person (String name,String idnum,String message)
+     public Person (String name,String Lastname,String message)
     {
         FirstName = name; 
-        Lastname = idnum;
+        Lastname = Lastname;
          
     }
+
 
     /**
      * @return the Name
@@ -43,15 +41,15 @@ public class Person implements  java.io.Serializable {
     /**
      * @return the Idnum
      */
-    public String getIdnum() {
+    public String Lastname() {
         return Lastname;
     }
 
     /**
      * @param Idnum the Idnum to set
      */
-    public void setIdnum(String Idnum) {
-        this.Lastname = Idnum;
+    public void Lastname(String Lastname) {
+        this.Lastname = Lastname;
     }
 
     /**
