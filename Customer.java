@@ -25,7 +25,7 @@ public class Customer extends Person implements java.io.Serializable {
     {
         this.CustomerID = CustomerID;
 	fName = p.getName();
-	lName = p.Lastname();
+	lName = p.getLastname();
 	address = p.getAddress();
 	zipcode = p.getZipcode();
     }
