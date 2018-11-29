@@ -33,4 +33,8 @@ public class Customer extends Person implements java.io.Serializable {
 	public String getCustomerID() {
 		return CustomerID;
 	}
+	
+	public void setCustomerID(String ID) {
+		this.CustomerID = ID;
+	}
 }
