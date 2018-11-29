@@ -33,29 +33,4 @@ public class Customer extends Person implements java.io.Serializable {
 	public String getCustomerID() {
 		return CustomerID;
 	}
-	
-    /**
-     * @return the Last Name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @return the Address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @return the Zipcode
-     */
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    /**
-     * @return the Message
-     */
 }
