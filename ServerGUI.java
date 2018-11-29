@@ -9,7 +9,7 @@ package cnit325finalproject;
  *
  * @author ateko
  */
-public class ServerGUI extends javax.swing.JFrame {
+public class ServerGUI extends javax.swing.JFrame implements  java.io.Serializable {
 
     /**
      * Creates new form ServerGUI

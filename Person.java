@@ -3,7 +3,7 @@ package cnit325finalproject;
 
 import java.util.*; 
 
-public class person {  
+public class Person implements java.io.Serializable{  
     
 
 
@@ -18,7 +18,7 @@ public class person {
      * @param city
      * @return the PUID
      */
-    public person (String name,String address,String phone_num,String city,String state, String Country,String email,String zipcode)
+    public Person (String name,String address,String phone_num,String city,String state, String Country,String email,String zipcode)
     {
         //
        this.setFirstname(name); 
@@ -71,15 +71,10 @@ public class person {
     
     // end name 
     
-  
-    /**
-     * @return the Firstname
-     */
-   
-   //end question 
-    
     //start address 
-    
+    /**
+     * @return the address
+     */
      public String getAddress() {
         return a01.getAddress();
     }
@@ -172,7 +167,7 @@ public class person {
 
 }
 
-class name {
+class name implements java.io.Serializable {
     private String Firstname; 
     private String Middlename; 
     private String last_name; 
@@ -228,7 +223,7 @@ class name {
    
     
 }
-class address
+class address implements java.io.Serializable
 {
     private String Address; 
     private String city; 
@@ -316,7 +311,7 @@ class address
     }
 
 }
-class contact 
+class contact implements java.io.Serializable
 {
       private String phone_number; 
       private String Email; 
@@ -359,12 +354,6 @@ class contact
  */
 
 
-class Advisor 
-{
-    private name n02 = new name("Advisor","Advisor"); 
-
-
-}
 
 
 

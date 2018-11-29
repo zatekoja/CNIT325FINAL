@@ -1,3 +1,5 @@
+package cnit325finalproject;
+
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -37,7 +39,7 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
 
     @Override
     public void run() {
-        System.out.println("cleint name:    " + person_stream1.getName());
+       
         System.out.println("Client socket:    " + incoming.toString());
         System.out.println("----------------------------");
         boolean start = true;
@@ -56,7 +58,7 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
                     System.out.println("------Message written to client-");
 
 
-                    System.out.println("Client name " + person_stream1.getName() + "\n" + "     Incoming message     " + ICM_Client + "\n");
+                   
                     System.out.println("-----------");
 
                 } else {
