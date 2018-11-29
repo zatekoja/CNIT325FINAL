@@ -18,9 +18,9 @@ public class OrderConfirmation extends Customer
     private String ConfirmationID, fName, lName, address, zipcode;
     private Customer c;
     
-    public OrderConfirmation(String customerInfo)
+    public OrderConfirmation(String Confirmation)
     {
-        this.ConfirmationID = ConfirmationID;
+        this.ConfirmationID = Confirmation;
         fName = c.getFirstName();
         lName = c.getLastName();
         address = c.getAddress();
