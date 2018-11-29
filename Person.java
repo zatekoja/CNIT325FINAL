@@ -16,10 +16,10 @@ public class Person implements  java.io.Serializable {
     private String Address; 
     private String Zipcode; 
     
-     public Person (String name,String Lastname,String message)
+     public Person (String name,String lastname,String message)
     {
         FirstName = name; 
-        Lastname = Lastname;
+        Lastname = lastname;
          
     }
 
