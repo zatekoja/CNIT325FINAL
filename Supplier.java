@@ -9,7 +9,7 @@ package finalproj;
  *
  * @author Aron
  */
-public class Supplier extends Person
+public class Supplier extends Person implements java.io.Serializable
 {
     String firstName;
     String lastName;
