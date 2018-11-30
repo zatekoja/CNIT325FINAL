@@ -1,6 +1,5 @@
 package cnit325finalproject;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -11,6 +10,9 @@ import java.io.Writer;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
+import javax.swing.*;
+import java.util.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,29 +24,31 @@ import java.util.logging.Logger;
  *
  * @author ateko
  */
-public class Customer_Gui extends javax.swing.JFrame implements  java.io.Serializable {
+public class Supplier_Gui extends javax.swing.JFrame implements  java.io.Serializable {
 
     /**
      * Creates new form Customer_Gui
      */
 
-    Customer customer = new Customer ("end", "end", "end","end", "end", "end","end", "end","end");
-    public Customer_Gui() {
+    Supplier supplier = new Supplier ("end", "end", "end","end", "end", "end","end", "end","end");
+    Item item = new Item();
+    ArrayList<Item> itemlist = new ArrayList<>();
+    public Supplier_Gui() {
         initComponents();
     }
-    public Customer_Gui(String Customerid,String FirstName, String Lastname, String address, String zipcode,String Phone,String email)
+    public Supplier_Gui(String Supplierid,String FirstName, String Lastname, String address, String zipcode,String Phone,String email)
     {
         initComponents();
-        customer.setFirstname(FirstName);
-        customer.setLast_name(Lastname);
-        customer.setPhone_number(Phone);
-        customer.setAddress(address);
-        customer.setZip_code(zipcode);
-        customer.setCustomerID(Customerid);
+        supplier.setFirstname(FirstName);
+        supplier.setLast_name(Lastname);
+        supplier.setPhone_number(Phone);
+        supplier.setAddress(address);
+        supplier.setZip_code(zipcode);
+        supplier.setSupplierID(Supplierid);
         this.txt_firstname.setText(FirstName);
         this.txt_lastname.setText(Lastname);
         this.txt_address.setText(address+","+zipcode);
-        this.txt_customerid.setText(Customerid);
+        this.txt_customerid.setText(Supplierid);
     
     }
     private ObjectOutputStream ObjectOut = null;
@@ -76,11 +80,14 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
         txt_lastname = new javax.swing.JTextField();
         txt_address = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_addItem = new javax.swing.JButton();
         txt_list = new java.awt.List();
         jLabel6 = new javax.swing.JLabel();
         txt_customerid = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btn_delete_item = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -127,7 +134,7 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(txt_address)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,20 +151,26 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                     .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jLabel5.setText("Cataloge");
+        jLabel5.setText("Your Items Supplied:");
 
-        jButton1.setText("View");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_addItem.setText("Add Item");
+        btn_addItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_addItemActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Order");
-
-        jLabel6.setText("CustomerID");
+        jLabel6.setText("SupplierID");
 
         txt_customerid.setEditable(false);
+
+        jLabel7.setText("Item Name");
+
+        jLabel8.setText("Description");
+
+        jLabel9.setText("Quantity");
+
+        btn_delete_item.setText("Delete Item");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,9 +185,11 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                 .addComponent(txt_customerid, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(185, 185, 185))
+                .addGap(73, 73, 73)
+                .addComponent(btn_addItem, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_delete_item, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,14 +198,18 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(478, 478, 478)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txt_list, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(146, 146, 146)
+                .addComponent(jLabel9)
+                .addGap(53, 53, 53))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +225,16 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_list, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(15, 15, 15)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_list, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_delete_item, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_addItem, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -230,18 +254,18 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
             Thread t = new Thread(r);
             t.start();            
             System.out.println("Send client type to server");
-            ObjectOut.writeObject("customer");
+            ObjectOut.writeObject("Supplier");
             System.out.println("----------------------------");
             System.out.println("Sent only start");
             System.out.println("----------------------------"); 
-            ObjectOut.writeObject(customer);
+            ObjectOut.writeObject(supplier);
             System.out.println("Sent the person and start to server");
             System.out.println("Received customer id");
-            txt_firstname.setText(customer.getFirstname());
-            txt_lastname.setText(customer.getLast_name());
-            txt_address.setText(customer.getAddress());
-            txt_customerid.setText(customer.getCustomerID());
-
+            txt_firstname.setText(supplier.getFirstname());
+            txt_lastname.setText(supplier.getLast_name());
+            txt_address.setText(supplier.getAddress());
+            txt_customerid.setText(supplier.getSupplierID());
+         
 
  
         } catch (Exception e) {
@@ -249,12 +273,13 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_addItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addItemActionPerformed
         // TODO add your handling code here:
-        String selected = txt_list.getSelectedItem();
-        view_catlogue vc = new view_catlogue(selected); 
-        vc.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        additem();
+        txt_list.add(supplier.item.getItemname()+"               " +supplier.item.getItemdescription()+"               "+ supplier.getSupplied_quantity());
+        itemlist.add(item);
+        System.out.println("Item list size " + itemlist.size());
+    }//GEN-LAST:event_btn_addItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,20 +298,21 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Customer_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Supplier_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Customer_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Supplier_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Customer_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Supplier_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Customer_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Supplier_Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Customer_Gui().setVisible(true);
+                new Supplier_Gui().setVisible(true);
             }
         });
     }
@@ -302,21 +328,54 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
                     }
                     
                 } catch (IOException ex) {
-                Logger.getLogger(Customer_Gui.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Supplier_Gui.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Customer_Gui.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Supplier_Gui.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
      }
+     public void additem()
+     {
+         JTextField txt_Itemname = new JTextField(15); 
+         JTextField txt_ItemDescription = new JTextField(15); 
+         JTextField txt_Itemquantity = new JTextField(5);
+         
+         JPanel myPanel = new JPanel();
+         myPanel.add(new JLabel("Item Name:"));
+         myPanel.add(txt_Itemname);        
+         myPanel.add(new JLabel("Item Quantity"));
+         myPanel.add(txt_Itemquantity);
+         myPanel.add(new JLabel("Item Description:"));
+         myPanel.add(txt_ItemDescription);
+         int result = JOptionPane.showConfirmDialog(null, myPanel, 
+               "Please Enter Values", JOptionPane.OK_CANCEL_OPTION);
+      if (result == JOptionPane.OK_OPTION) {
+          
+          supplier.item.setItemname(txt_Itemname.getText());
+          supplier.item.setItemdescription(txt_ItemDescription.getText());
+          supplier.setSupplied_quantity(txt_Itemquantity.getText());
+          item.setItemname(txt_Itemname.getText());
+          item.setItemdescription(txt_ItemDescription.getText());
+      }
+         
+     
+         
+     
+     }
+     
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_addItem;
+    private javax.swing.JButton btn_delete_item;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

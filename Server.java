@@ -26,7 +26,8 @@ import java.util.ArrayList;
  */
 public class Server implements java.io.Serializable {
 
-    Customer customer_stream1 = new Customer("end", "end", "end", "end", "end", "end", "end", "end", "end");
+    Customer customer_stream = new Customer("end", "end", "end", "end", "end", "end", "end", "end", "end");
+    Supplier supplier_stream = new Supplier ("end", "end", "end","end", "end", "end","end", "end","end");
     Person p01 = new Person("end", "end", "end", "end", "end", "end", "end", "end");
     ArrayList<Person> Client_list = new ArrayList<>();
     ArrayList<Person> Customer_list = new ArrayList<>();
@@ -69,6 +70,7 @@ public class Server implements java.io.Serializable {
                     p01 = customer();
 
                 } else {
+                    p01 = supplier();
 
                 }
 
@@ -79,9 +81,7 @@ public class Server implements java.io.Serializable {
                 System.out.println("----------------------------");
                 System.out.println("Multi threaded server started");
                 MtS.start();
-//            fw = new FileWriter(Customerdb_log.getAbsoluteFile(), true);
-//            w = new BufferedWriter(fw);
-//            customer_stream1 = (Customer)(inFromClient.readObject());          
+      
 
             }
         } catch (Exception e) {
@@ -114,9 +114,9 @@ public class Server implements java.io.Serializable {
             
             System.out.println("customer obj read");
             Customer_list.add(customer_count-1, customer);
-            Client_list.add(client_count - 1, customer_stream1);
+            Client_list.add(client_count - 1, customer_stream);
             System.out.println(customer.getCustomerID() + " " + customer.getFirstname() + " " + customer.getLast_name() + " " + customer.getAddress());
-            w.write(customer.getCustomerID() + " " + customer.getFirstname() + " " + customer.getLast_name() + " " + customer.getAddress());
+            w.write(customer.getCustomerID() + " " + customer.getFirstname() + " " + customer.getLast_name() + " " + customer.getAddress() +"  "+ t.getTime());
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,13 +128,39 @@ public class Server implements java.io.Serializable {
         }
         return customer;
     }
-
-    public void supplier() {
+     public Supplier supplier() {
+        Supplier supplier = new Supplier("end", "end", "end", "end", "end", "end", "end", "end", "end");
         try {
+            System.out.println("---------------inside suplier-----------");
+            fw = new FileWriter(Supplierdb_log.getAbsoluteFile(), true);
+            w = new BufferedWriter(fw);
+
+            System.out.println("finsihed buffer writter");
+            supplier_count++;
+            System.out.println(" Supplier count is   :" + supplier_count);
+            
+            System.out.println("trying to read supplier object");
+            supplier = (Supplier) (inFromClient.readObject());
+            
+            System.out.println("Supplier obj read");
+            Supplier_list.add(supplier_count-1, supplier);
+            Client_list.add(client_count - 1, supplier_stream);
+            System.out.println(supplier.getSupplierID() + " " + supplier.getFirstname() + " " + supplier.getLast_name() + " " + supplier.getAddress());
+            w.write(supplier.getSupplierID() + " " + supplier.getFirstname() + " " + supplier.getLast_name() + " " + supplier.getAddress()+" " + supplier.item.getItemname()+" " + supplier.getSupplied_quantity()+"  "+ t.getTime());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        finally {
+        
+            try {w.close();}
+            catch (Exception e){ e.printStackTrace();}
+        }
+        return supplier;
     }
+
+
+
+
 
 }
