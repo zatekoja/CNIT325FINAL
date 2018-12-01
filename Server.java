@@ -92,12 +92,6 @@ public class Server implements java.io.Serializable {
 
     }
 
-    public void send_message_client(String msg) {
-        for (MultithreadedServer m : mts_list) {
-            m.send_message(msg);
-        }
-    }
-
     public Customer customer() {
         Customer customer = new Customer("end", "end", "end", "end", "end", "end", "end", "end", "end");
         try {
