@@ -63,28 +63,7 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
                 }
                 
                 
-                
-                
-//                System.out.println("Waiting for value of A");
-//                A = (String) (inFromClient.readObject());
-//                System.out.println("------------------Read a value of a = ----------" + A);
-//                if (A.equalsIgnoreCase("Send")) {
-//
-//                    System.out.println("-----READING INCOMING MESSAGE FROM CLIENT------");
-//                    ICM_Client = (String) (inFromClient.readObject());
-//                    System.out.println("------Received message-----");
-//
-//                    server.send_message_client(ICM_Client);
-//                    System.out.println("------Message written to client-");
-//
-//
-//                   
-//                    System.out.println("-----------");
-//
-//                } else {
-//                    System.out.println("-------------dkfbsdkj;n;sjdkn;jkdsng;kjdsgn;ds---------------");
-//
-//                }
+               
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -106,28 +85,6 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
 
     }
 
-    public void send_message(String msg) {
-        try {
-            outToClient.writeObject(msg);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    public int persontype(Person p)
-    {
-        int x = 0; 
-        
-        if (p instanceof Customer)
-        {
-            x = 1;
-            return x;
-        
-        }
-        else {
-            x=2;
-            return x;}    
-    
  
-    }
     
 }
