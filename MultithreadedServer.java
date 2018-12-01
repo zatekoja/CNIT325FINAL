@@ -46,32 +46,7 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
         System.out.println("----------------------------");
         boolean start = true;
         while (start == true) {
-            try {
-                
-                switch (persontype(person_stream1))
-                {
-                 
-                    case 1: 
-                        //code 
-                        System.out.println("In customer");
-                            break; 
-                    case 2:
-                        //break
-                        System.out.println("In supplier");
-                            break;
-                
-                }
-                
-                
-               
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                start = false;
-            } finally {
-                System.out.println("-------------fianlly---------------");
-                return_message();
-            }
+            
 
         }
     }
