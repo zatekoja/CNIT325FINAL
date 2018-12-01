@@ -290,23 +290,7 @@ public class Customer_Gui extends javax.swing.JFrame implements  java.io.Seriali
             }
         });
     }
-     private final class ListenFromServer implements Runnable{
-        
-        public void run(){
-            
-            try {
-                while(true){
-                        String msg = (String) Objectin.readObject() + "\n";
-                        MessageIn = msg;
-                       // txt_Reply.append(msg);
-                    }
-                    
-                } catch (IOException ex) {
-                Logger.getLogger(Customer_Gui.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Customer_Gui.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }
+   
      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
