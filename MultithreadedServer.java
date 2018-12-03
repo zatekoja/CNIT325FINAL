@@ -18,6 +18,7 @@ import java.net.Socket;
  */
 public class MultithreadedServer extends Thread implements java.io.Serializable {
 
+    //Declaration of variables
     Socket incoming = null;
     ObjectOutputStream outToClient = null;
     ObjectInputStream inFromClient = null;
@@ -39,6 +40,7 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
         this.server = server;
     }
 
+    //run server
     @Override
     public void run() {
        
@@ -50,7 +52,8 @@ public class MultithreadedServer extends Thread implements java.io.Serializable 
 
         }
     }
-
+    
+    
     public String return_message() {
         String message;
         message = this.ICM_Client;
