@@ -3,32 +3,53 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package orderconfirmation;
+package finalproj;
 
-import java.io.FileInputStream;
+
 import java.io.IOException;
 import java.util.Properties;
-
+;
+import java.io.*;
 /**
  *
  * @author Stephen
  */
-public class OrderConfirmation extends Customer
+public class OrderConfirmation extends Order
 {
-    //declaration of variables
-    private String ConfirmationID, fName, lName, address, zipcode;
-    private Customer c;
+    public String custID, Customerid, name, address, city, state, Country, zipcode, Phonoe, email, ConfirmationID;
+    public double price, tax, total;
+    private Order o;
     
-    //inheret customer class information
-    public OrderConfirmation(String Confirmation)
+    public OrderConfirmation(String Customerid,String name, String address, String city, String state, String Country,
+            String zipcode,String Phone,String email, double orderprice, double ordertax, double ordertotal, String Confirmation)
     {
-        this.ConfirmationID = Confirmation;
-        fName = c.getFirstName();
-        lName = c.getLastName();
-        address = c.getAddress();
-        zipcode = c.getZipcode();
-            
+        super(Customerid, name, address, city, state, Country, zipcode, Phone,email, orderprice, ordertax,  ordertotal);
+        this.ConfirmationID = Confirmation;     
     }
+    public OrderConfirmation()
+    {
+        name = o.getName();
+        address = o.getAddress();
+        
+    }
+    
+    public static void main (String [] args) throws IOException
+    {
+        try
+        {
+            File outputFile = new File("output.txt");
+            FileWriter  outputWrite = new FileWriter(outputFile);
+            PrintWriter printer = new PrintWriter(outputWrite);
+            printer.println("Thank you for your order!");
+            printer.print("Hello ");
+            
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
 }
     
   
