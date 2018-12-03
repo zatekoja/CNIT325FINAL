@@ -9,6 +9,8 @@ package cnit325finalproject;
  *
  * @author ateko
  */
+
+//Declaration of variables
 public class Item implements  java.io.Serializable {
     private String Itemname; 
     private String Itemdescription;
@@ -16,6 +18,8 @@ public class Item implements  java.io.Serializable {
     /**
      * @return the Itemname
      */
+    
+//Getters and Setters for each variable
     public String getItemname() {
         return Itemname;
     }
