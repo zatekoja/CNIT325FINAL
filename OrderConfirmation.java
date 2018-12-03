@@ -15,9 +15,11 @@ import java.util.Properties;
  */
 public class OrderConfirmation extends Customer
 {
+    //declaration of variables
     private String ConfirmationID, fName, lName, address, zipcode;
     private Customer c;
     
+    //inheret customer class information
     public OrderConfirmation(String Confirmation)
     {
         this.ConfirmationID = Confirmation;
