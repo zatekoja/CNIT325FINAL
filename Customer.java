@@ -31,6 +31,7 @@ public class Customer extends Person implements java.io.Serializable {
      * @param Country
      * @param email
 	*/
+	//Declaration of each variable
     public Customer(String CustomerID,String name,String address,String phone_num,String city,String state, String Country,String email,String zipcode)
     {
 	super(name, address, phone_num, city, state, Country, email, zipcode);
@@ -41,6 +42,7 @@ public class Customer extends Person implements java.io.Serializable {
 	 * @return the Customer ID
 	 */
 	
+	//Getters and Setters for each variable
 	public String getCustomerID() {
 		return CustomerID;
 	}
