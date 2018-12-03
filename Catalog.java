@@ -26,19 +26,76 @@ public class Catalog
     String descHeart = "Finding trouble keeping up at the gym? This listing is for you! Selling a human heart!";
     String descLiver = "Spending too much time at Harry's? We've got you covered! Selling a liver to the highest bidder!";
 
-    String getKidney()
-    { 
+    public String getKidney() {
         return kidney;
     }
-    
-    String getHeart()
-    { 
+
+    public void setKidney(String kidney) {
+        this.kidney = kidney;
+    }
+
+    public String getHeart() {
         return heart;
     }
-    
-    String getLiver()
-    { 
+
+    public void setHeart(String heart) {
+        this.heart = heart;
+    }
+
+    public String getLiver() {
         return liver;
+    }
+
+    public void setLiver(String liver) {
+        this.liver = liver;
+    }
+
+    public int getPriceKidney() {
+        return priceKidney;
+    }
+
+    public void setPriceKidney(int priceKidney) {
+        this.priceKidney = priceKidney;
+    }
+
+    public int getPriceHeart() {
+        return priceHeart;
+    }
+
+    public void setPriceHeart(int priceHeart) {
+        this.priceHeart = priceHeart;
+    }
+
+    public int getPriceLiver() {
+        return priceLiver;
+    }
+
+    public void setPriceLiver(int priceLiver) {
+        this.priceLiver = priceLiver;
+    }
+
+    public String getDescKidney() {
+        return descKidney;
+    }
+
+    public void setDescKidney(String descKidney) {
+        this.descKidney = descKidney;
+    }
+
+    public String getDescHeart() {
+        return descHeart;
+    }
+
+    public void setDescHeart(String descHeart) {
+        this.descHeart = descHeart;
+    }
+
+    public String getDescLiver() {
+        return descLiver;
+    }
+
+    public void setDescLiver(String descLiver) {
+        this.descLiver = descLiver;
     }
    
     public Catalog()
