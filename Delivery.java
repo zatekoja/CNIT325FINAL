@@ -9,7 +9,7 @@ package cnit325finalproject;
  * TEMPORARY CLASS - Takes input Address To and Address From
  * Returns a number of business days for estimated delivery
  */
-public class Delivery extends OrderConfirmation {
+public class Delivery extends Order {
 
    //Variables are To and From Addresses, and estimatedArrival that is "Determined" by OrderConfirmation information given
     
