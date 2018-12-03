@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package finalproj;
+package cnit325finalproject;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -19,9 +19,13 @@ public class Catalog
     String kidney;
     String heart;
     String liver;
-    String eye;
-    String foot;
-    
+    int priceKidney = 20000;
+    int priceHeart = 50000;
+    int priceLiver = 30000;
+    String descKidney = "Looking for a better way to cleanse your urine? Look no further! Selling one kidney to one lucky customer!";
+    String descHeart = "Finding trouble keeping up at the gym? This listing is for you! Selling a human heart!";
+    String descLiver =  "Spending too much time at Harry's? We've got you covered! Selling a liver to the highest bidder!";
+
     String getKidney()
     { 
         return kidney;
@@ -36,51 +40,14 @@ public class Catalog
     { 
         return liver;
     }
-    
-    String getEye()
-    { 
-        return eye;
-    }
-    
-    String getFoot()
-    { 
-        return foot;
-    }
-
-    public Catalog(String fileName)
+   
+    public Catalog()
     {
-        try
-        {
-            //create a new properties object
-            Properties props = new Properties();
-            //load the properties from the file
-            props.load(getClass().getResourceAsStream("CatalogProps.properties"));
-            //load each specific property into the instance variable
-            kidney = props.getProperty("CatalogProps.kidney");
-            heart = props.getProperty("CatalogProps.heart");
-            liver = props.getProperty("CatalogProps.liver");
-            eye = props.getProperty("CatalogProps.eye");
-            foot = props.getProperty("CatalogProps.foot");
-
-
-        }
-        catch(IOException exc) //catches an IO exception
-        { 
-            exc.printStackTrace(); //shows the output and code trace if something goes wrong
-        }
-    
+            
     }
     public static void main(String [] args)
     {
-        
-       //instantiate a new SimpleDataSource object and load the name of the external properties file
-        Catalog sds = new Catalog("CatalogProps.properties");
-        //return each value from the properties file to the output console. This will confirm correct operation
-        System.out.println("Available hearts from: " + sds.getHeart());
-        System.out.println("Available kidneys from: " + sds.getKidney());
-        System.out.println("Available livers from: " + sds.getLiver());
-        System.out.println("Availble eyes from: " + sds.getEye());
-        System.out.println("Available feet from: " + sds.getFoot());
+       
     }
        
 }   
