@@ -24,7 +24,7 @@ public class Catalog
     int priceLiver = 30000;
     String descKidney = "Looking for a better way to cleanse your urine? Look no further! Selling one kidney to one lucky customer!";
     String descHeart = "Finding trouble keeping up at the gym? This listing is for you! Selling a human heart!";
-    String descLiver =  "Spending too much time at Harry's? We've got you covered! Selling a liver to the highest bidder!";
+    String descLiver = "Spending too much time at Harry's? We've got you covered! Selling a liver to the highest bidder!";
 
     String getKidney()
     { 
