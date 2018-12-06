@@ -58,8 +58,8 @@ public class Order
     }
     Customer customer = new Customer();
     private Supplier supplier = new Supplier();
-    private String itemdesc = "This item is a heart from Marylin Monroe"; //where is location of this?
-    private String OrderID = "500"; //where is location of this?
+    private String itemdesc = this.itemdesc; //where is location of this?
+    private String OrderID = this.OrderID; //where is location of this?
     
     
 }
