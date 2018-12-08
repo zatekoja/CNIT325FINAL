@@ -1,42 +1,93 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cnit325finalproject;
 
-/**
- * TEMPORARY CLASS - Takes input Address To and Address From
- * Returns a number of business days for estimated delivery
- */
-public class Delivery extends Order {
+//ADD APACHE COMMONS LANG .JAR FILE TO LIBRARY
+//ADD ORG.JSON .JAR FILE TO LIBRARY
 
-   //Variables are To and From Addresses, and estimatedArrival that is "Determined" by OrderConfirmation information given
-    
-    private String AddressTo;
-    private String AddressFrom;
-    private String estimatedArrival;
+import java.net.URL;
+import org.json.JSONObject;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONTokener;
 
-    //
 
-    public Delivery(String CustomerID, String name, String address, 
-            String phone_num, String city, String state, String Country, String email, String zipcode) {
-        super(CustomerID, name, address, phone_num, city, state, Country, email, zipcode);
-        this.estimatedArrival = "Your package will arrive in approximately 4 business days.";
+//Extends Order to obtain Customer's zipcode for shipping estimate
+public class Delivery extends Order{
+    private String zipTo, zipFrom;
+    private String distance, duration;
+
+    public String getZipTo() {
+        return zipTo;
+    }
+
+    public void setZipTo(String zipTo) {
+        this.zipTo = zipTo;
+    }
+
+    public String getZipFrom() {
+        return zipFrom;
+    }
+
+    public void setZipFrom(String zipFrom) {
+        this.zipFrom = zipFrom;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
     
-    public String getEstimatedArrival() {
-        return estimatedArrival;
+    public Delivery(String zipTo) {
+        this.zipFrom = "47907";
+        this.zipTo = zipTo;
     }
-
-    public void setEstimatedArrival(String estimatedArrival) {
-        this.estimatedArrival = estimatedArrival;
-    }
+    
    
-    /*public String EstimatedArrival(String AddressTo, String AddressFrom) {
-        //EstimatedArrival 
-        String result = "Ship To: " + AddressTo 
-                + "Your package will arrive in approximately 4 business days.";
-        return result;
-    }*/
+   //method builds the URL to pull the JSON data from the Google Distance Matrix API
+   //Includes parameters for zipcode to and from to calculate distance and duration 
+    public String urlBuild(String to, String from){
+       String replaceTo = to.replace(" ", "+");
+       String replaceFrom = from.replace(" ", "+");
+       String url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" 
+               + replaceFrom + "&destinations=" + replaceTo 
+               + "&key=AIzaSyBudOwhhWwuPh1L7CQn4rZg9JAKIa0xNEc";
+       return url;
+    }
+    
+   //Obtains the JSON data and grabs the distance and duration given from the API
+    public void getDeliveryInfo() throws IOException {
+        JSONObject json = null;
+        URL url;
+        String miles;
+        String duration;
+        try {
+            url = new URL(urlBuild(getZipFrom(), getZipTo()));
+            JSONTokener t = new JSONTokener(url.openStream());
+            json = new JSONObject(t);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Delivery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        duration = json.toString();
+        miles = json.toString();
+       
+        setDuration(StringUtils.substringBetween(duration, "\"duration\":{\"text\":\"", "\","));
+        //System.out.println(dur2);
+       
+        setDistance(StringUtils.substringBetween(miles, "\"distance\":{\"text\":\"", "\","));
+        //System.out.println(mil2);
+    }
 }
