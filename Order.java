@@ -14,6 +14,29 @@ import java.util.*;
  */
 public class Order 
 {
+    public void nullSupplier(Supplier supplier)
+    {
+        if(supplier == null)
+        {
+            JOptionPane.showMessageDialog(null, "Supplier is not valid");
+        }
+    }
+            
+    public void nullItemDesc(String itemdesc)
+    {
+        if(itemdesc == null)
+                {
+                   JOptionPane.showMessageDialog(null, "Item description is invalid");
+                }
+    }
+    
+    public void nullOrderID(String OrderID)
+    {
+        if (OrderID == null)
+        {
+            JOptionPane.showMessageDialog(null, "Order number is in valid");
+        }
+    }
 
     /**
      * @return the supplier
